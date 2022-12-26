@@ -1,0 +1,33 @@
+﻿@model List<City>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between mx-2">
+        <h3><b>Cities</b></h3>
+        <a class="btn btn-primary" asp-action="create">Create</a>
+    </div>
+<div class="row">
+        <table class="table table-hover text-center align-items-center">
+        <thead>
+        <tr class="bg-light">
+                <td></td>
+                <th class="col-md-3">Name</th>
+                <th class="col-md-5"></th>
+                <th class="col-md-2">Edit</th>
+                <th class="col-md-2">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var city in Model)
+            {
+                <tr>
+                        <td><i class="fa fa-city text-danger fw-bolder fs-5"></i></td>
+                        <td>@city.Name</td>
+                        <td></td>
+                        <td><a asp-action="edit" asp-route-id="@city.Id"><i class="fa fa-edit text-primary"></i></a></td>
+                        <td><a asp-action="delete" asp-route-id="@city.Id"><i class="fa fa-trash text-danger"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>
+        

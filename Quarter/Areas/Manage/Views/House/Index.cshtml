@@ -1,7 +1,47 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@using Quarter.Areas.Manage.ViewModels
+@model PaginatedList<House>
 
-<h1>Index</h1>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between mx-2">
+        <h3><b>Houses</b></h3>
+        <a class="btn btn-primary" asp-action="create">Create</a>
+    </div>
+    <div class="row">
+        <table class="table table-hover text-center align-items-center">
+            <thead>
+                <tr class="bg-light">
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-1">Name</th>
+                    <th class="col-md-1">Category</th>
+                    <th class="col-md-1">Broker</th>
+                    <th class="col-md-1">City</th>
+                    <th class="col-md-1">Sale</th>
+                    <th class="col-md-1">Cost</th>
+                    <th class="col-md-1">Discount</th>
+                    <th class="col-md-1">Poster</th>
+                    <th class="col-md-1">Edit</th>
+                    <th class="col-md-1">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var house in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@house.Name</td>
+                        <td>@house.Category.Name</td>
+                        <td>@house.Broker.Fullname</td>
+                        <td>@house.City.Name</td>
+                        <td>@house.SalePrice</td>
+                        <td>@house.CostPrice</td>
+                        <td>@house.DiscountPercent</td>
+                        <td>images</td>
+                        <td><a asp-action="edit" asp-route-id="@house.Id"><i class="fa fa-edit text-primary"></i></a></td>
+                        <td><a asp-action="delete" asp-route-id="@house.Id"><i class="fa fa-trash text-danger"></i></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 
+</div>

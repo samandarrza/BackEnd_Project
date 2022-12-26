@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Manage\ViewModels\" />
     <Folder Include="Enums\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
   <ItemGroup>

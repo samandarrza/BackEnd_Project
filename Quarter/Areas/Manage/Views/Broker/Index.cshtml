@@ -1,40 +1,33 @@
 ﻿@model List<Broker>
-<div class="d-flex justify-content-between mx-2">
-    <h3>Brokers</h3>
-    <a class="btn btn-primary" asp-action="create">Create</a>
-</div>
-
-<table>
-    <thead>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between mx-2">
+        <h3><b>Brokers</b></h3>
+        <a class="btn btn-primary" asp-action="create">Create</a>
+    </div>
+<div class="row">
+    <table class="table table-hover text-center align-items-center">
+        <thead>
         <tr class="bg-light">
-            <th class="col-md-1 p-2 text-center">Image</th>
-            <th class="col-md-3">Name</th>
-            <th class="col-md-4"></th>
-            <th class="col-md-2">Edit</th>
-            <th class="col-md-2">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var broker in Model)
-        {
-            <tr>
-                <td class="col-md-1 p-4">
-                    <img width="50px" class="border-radius-2xl" src="~/main/img/team/@broker.Image" class="m-1">
-                </td>
-                <td class="col-md-3">
-                    <h6 class="mb-0 text-sm">@broker.Fullname</h6>
-                </td>
-                <td class="col-md-4"></td>
-                <td class="col-md-2">
-                    <a asp-action="edit" asp-route-id="@broker.Id"><i class="fa fa-edit text-primary"></i></a>
-                </td>
-                <td class="col-md-2">
-                    <a asp-action="delete" asp-route-id="@broker.Id"><i class="fa fa-trash text-danger"></i></a>
-                </td>
-
-
+                    <th class="col-md-1 p-2 text-center">Image</th>
+                    <th class="col-md-3">Name</th>
+                    <th class="col-md-4"></th>
+                    <th class="col-md-2">Edit</th>
+                    <th class="col-md-2">Delete</th>
             </tr>
-
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var broker in Model)
+            {
+                <tr>
+                        <td><img width="36px" style="border-radius:10px" src="~/main/img/team/@broker.Image" class="m-1"></td>
+                        <td>@broker.Fullname</td>
+                        <td></td>
+                        <td><a asp-action="edit" asp-route-id="@broker.Id"><i class="fa fa-edit text-primary"></i></a></td>
+                        <td><a asp-action="delete" asp-route-id="@broker.Id"><i class="fa fa-trash text-danger"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>
+        
