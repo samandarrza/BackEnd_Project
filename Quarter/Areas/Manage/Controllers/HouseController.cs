@@ -2,14 +2,14 @@
 
 namespace Quarter.Areas.Manage.Controllers
 {
-    [Area("manage")]
-    public class DashboardController : Controller
+    public class HouseController : Controller
     {
         public IActionResult Index()
         {
+
             return View();
         }
-        public IActionResult Error()
+        public IActionResult Edit()
         {
             return View();
         }

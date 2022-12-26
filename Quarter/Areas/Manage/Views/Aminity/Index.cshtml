@@ -1,0 +1,41 @@
+﻿@model List<Aminity>
+    <div class="d-flex justify-content-between mx-2">
+        <h3>Aminities</h3>
+        <a class="btn btn-primary" asp-action="create">Create</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr class="bg-light">
+                <th class="col-md-1 p-2 text-center">Icon</th>
+                <th class="col-md-3">Name</th>
+                <th class="col-md-4"></th>
+                <th class="col-md-2">Edit</th>
+                <th class="col-md-2">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var aminity in Model)
+            {
+                <tr>
+                    <td class="col-md-1 p-2">
+                        <i class="@aminity.Icon p-5 text-danger fw-bold"></i>
+                    </td>
+                    <td class="col-md-3">
+                        <h6 class="mb-0 text-sm">@aminity.Name</h6>
+                    </td>
+                    <td class="col-md-4"></td>
+                    <td class="col-md-2">
+                        <a asp-action="edit" asp-route-id="@aminity.Id"><i class="fa fa-edit text-primary"></i></a>
+                    </td>
+                    <td class="col-md-2">
+                    <a asp-action="delete" asp-route-id="@aminity.Id"><i class="fa fa-trash text-danger"></i></a>
+                    </td>
+
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+        
