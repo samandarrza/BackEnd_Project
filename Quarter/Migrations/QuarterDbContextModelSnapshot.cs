@@ -327,8 +327,11 @@ namespace Quarter.Migrations
                     b.Property<int>("BrokerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("BuiltYear")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("BuiltYear")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CarParking")
+                        .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -343,7 +346,6 @@ namespace Quarter.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Desc")
-                        .IsRequired()
                         .HasMaxLength(3000)
                         .HasColumnType("nvarchar(3000)");
 

@@ -19,25 +19,24 @@
                     <th class="col-md-1">Cost</th>
                     <th class="col-md-1">Discount</th>
                     <th class="col-md-1">Poster</th>
-                    <th class="col-md-1">Edit</th>
-                    <th class="col-md-1">Delete</th>
+                    <th class="col-md-1">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var house in Model)
                 {
                     <tr>
-                        <td></td>
+                        <td>0</td>
                         <td>@house.Name</td>
                         <td>@house.Category.Name</td>
                         <td>@house.Broker.Fullname</td>
                         <td>@house.City.Name</td>
                         <td>@house.SalePrice</td>
                         <td>@house.CostPrice</td>
-                        <td>@house.DiscountPercent</td>
-                        <td>images</td>
-                        <td><a asp-action="edit" asp-route-id="@house.Id"><i class="fa fa-edit text-primary"></i></a></td>
-                        <td><a asp-action="delete" asp-route-id="@house.Id"><i class="fa fa-trash text-danger"></i></a></td>
+                        <td>@house.DiscountPercent%</td>
+                        <td><img width="50px" max-height="40px" src="~/main/uploads/houses/@house.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" /></td>
+                        <td><a asp-action="edit" asp-route-id="@house.Id"><i class="fa fa-edit text-primary"> </i></a> 
+                        <a asp-action="delete" asp-route-id="@house.Id"><i class="fa fa-trash text-danger"> </i></a></td>
                     </tr>
                 }
             </tbody>

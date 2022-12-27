@@ -1,7 +1,136 @@
-﻿
-@{
-    ViewData["Title"] = "Edit";
+﻿@model House
+<div class="container-fluid">
+    <h3>Houses / Edit</h3>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form asp-action="edit" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CityId">City</label>
+                        <select asp-for="CityId" class="form-control" asp-items="@(new SelectList(ViewBag.Cities,nameof(City.Id),nameof(City.Name)))">
+                        </select>
+                        <span class="text-danger" asp-validation-for="CityId"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BrokerId">Broker</label>
+                        <select asp-for="BrokerId" class="form-control" asp-items="@(new SelectList(ViewBag.Brokers,nameof(Broker.Id),nameof(Broker.Fullname)))">
+                        </select>
+                        <span class="text-danger" asp-validation-for="BrokerId"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryId">Category</label>
+                        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories,nameof(Category.Id),nameof(Category.Name)))">
+                        </select>
+                        <span class="text-danger" asp-validation-for="CategoryId"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                            <label asp-for="SalePrice">SalePrice</label>
+                            <input asp-for="SalePrice" class="form-control">
+                            <span class="text-danger" asp-validation-for="SalePrice"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CostPrice">CostPrice</label>
+                            <input asp-for="CostPrice" class="form-control">
+                            <span class="text-danger" asp-validation-for="CostPrice"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DiscountPercent">DiscountPercent</label>
+                            <input asp-for="DiscountPercent" class="form-control">
+                            <span class="text-danger" asp-validation-for="DiscountPercent"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <div class="form-group">
+                            <label asp-for="RoomsCount">RoomsCount</label>
+                            <input asp-for="RoomsCount" class="form-control">
+                            <span class="text-danger" asp-validation-for="RoomsCount"></span>
+                        </div>
+                        <div class="form-group mx-1">
+                            <label asp-for="BedRoomCount">BedRoomCount</label>
+                            <input asp-for="BedRoomCount" class="form-control">
+                            <span class="text-danger" asp-validation-for="BedRoomCount"></span>
+                        </div>
+                        <div class="form-group mx-1">
+                            <label asp-for="BathRoomCount">BathRoomCount</label>
+                            <input asp-for="BathRoomCount" class="form-control">
+                            <span class="text-danger" asp-validation-for="BathRoomCount"></span>
+                        </div>
+                        <div class="form-group mx-1">
+                            <label asp-for="CarParking">CarParking</label>
+                            <input asp-for="CarParking" class="form-control">
+                            <span class="text-danger" asp-validation-for="CarParking"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SquareFt">SquareFt</label>
+                            <input asp-for="SquareFt" class="form-control">
+                            <span class="text-danger" asp-validation-for="SquareFt"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AminityIds">Aminities</label>
+                        <select asp-for="AminityIds" class="form-control" asp-items="@(new SelectList(ViewBag.Aminities,nameof(Aminity.Id),nameof(Aminity.Name)))">
+                        </select>
+                        <span class="text-danger" asp-validation-for="AminityIds"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Desc">Desc</label>
+                        <textarea id="editor" asp-for="Desc" class="form-control"></textarea>
+                        <span class="text-danger" asp-validation-for="Desc"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Status">
+                        <label asp-for="Status">Status</label>
+                        <span class="text-danger" asp-validation-for="Status"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PosterFile">PosterFile</label>
+                        <input asp-for="PosterFile" class="form-control">
+                        <img width="100px" style="border-radius: 10px" src="~/main/uploads/houses/@Model.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" />
+                        <span class="text-danger" asp-validation-for="PosterFile"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageFiles">ImageFiles</label>
+                        <input asp-for="ImageFiles" class="form-control">
+
+
+                        <div class="d-flex">
+                            @foreach (var item in Model.HouseImages.Where(x => x.PosterStatus != true).ToList())
+                       {
+                                <div class="img-box m-1">
+                            <span class="delete-item d-flex"> <i class="fa fa-minus"></i> </span>
+                            <img width="100px" style="border-radius: 10px" src="~/main/uploads/houses/@item.Name" />
+                            <input type="hidden" name="BookImageIds" value="@item.Id">
+                            </div>
+                        }
+                        </div>
+                        <span class="text-danger" asp-validation-for="ImageFiles"></span>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary m-2">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 }
-
-<h1>Edit</h1>
-
