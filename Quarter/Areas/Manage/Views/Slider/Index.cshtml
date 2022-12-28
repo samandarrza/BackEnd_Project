@@ -31,9 +31,9 @@
                         <td class="col-md-2">@slider.Title1, @slider.Title2</td>
                         <td class="col-md-1"><i class="@slider.SubTitleIcon text-danger fw-bolder fs-5"></i></td>
                         <td class="col-md-1"><small>@slider.SubTitle</small></td>
-                        <td class="col-md-2"><img width="50px" src="~/main/img/slider/@slider.Image"></td>
+                        <td class="col-md-2"><img width="50px" src="~/main/uploads/sliders/@slider.Image"></td>
                         <td><a asp-action="edit" asp-route-id="@slider.Id"><i class="fa fa-edit text-primary"></i></a></td>
-                        <td><a asp-action="delete" asp-route-id="@slider.Id"><i class="fa fa-trash text-danger"></i></a></td>
+                        <td><a class="trash-btn" asp-action="delete" asp-route-id="@slider.Id"><i class="fa fa-trash text-danger"></i></a></td>
                     </tr>
                 }
             </tbody>

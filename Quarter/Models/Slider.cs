@@ -18,7 +18,7 @@ namespace Quarter.Models
         [MaxLength(300)]
         public string Desc { get; set; }
         [MaxLength(60)]
-        public string Image { get; set; }
+        public string? Image { get; set; }
         [MaxLength(30)]
         public string BtnText { get; set; }
         [MaxLength(200)]
@@ -27,6 +27,6 @@ namespace Quarter.Models
         [NotMapped]
         [MaxFileSize(2048)]
         [AllowedFileTypes("image/jpeg", "image/png")]
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
     }
 }

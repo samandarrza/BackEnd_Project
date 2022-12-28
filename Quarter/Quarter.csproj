@@ -9,6 +9,8 @@
   <ItemGroup>
     <Folder Include="Enums\" />
     <Folder Include="wwwroot\main\uploads\houses\" />
+    <Folder Include="wwwroot\main\uploads\userImage\" />
+    <Folder Include="wwwroot\main\uploads\sliders\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Quarter.DAL;
+using Quarter.Helpers;
+using Quarter.Models;
 
 namespace Quarter.Areas.Manage.Controllers
 {
@@ -8,10 +10,12 @@ namespace Quarter.Areas.Manage.Controllers
     public class SliderController : Controller
     {
         private readonly QuarterDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public SliderController(QuarterDbContext context)
+        public SliderController(QuarterDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
         public IActionResult Index(int page = 1)
         {
@@ -22,11 +26,95 @@ namespace Quarter.Areas.Manage.Controllers
         }
         public IActionResult Create()
         {
+            var slider = _context.Sliders.OrderByDescending(x => x.Order).FirstOrDefault();
+            int order = slider == null ? 1 : slider.Order + 1;
+            ViewBag.Order = order;
             return View();
         }
-        public IActionResult Edit()
+
+        [HttpPost]
+        public IActionResult Create(Slider slider)
         {
-            return View();
+            if (slider == null)
+            {
+                return View();
+            }
+            if (slider.ImageFile == null)
+            {
+                ModelState.AddModelError("ImageFile", "Required");
+                return View();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            slider.Image = FileManager.Save(slider.ImageFile, _env.WebRootPath, "main/uploads/sliders");
+
+            _context.Sliders.Add(slider);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            Slider slider = _context.Sliders.FirstOrDefault(x => x.Id == id);
+
+            if (slider == null)
+                return RedirectToAction("error", "dashboard");
+
+            return View(slider);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Slider slider)
+        {
+            Slider existSlider = _context.Sliders.FirstOrDefault(x => x.Id == slider.Id);
+
+            if (existSlider == null)
+                return RedirectToAction("index");
+
+            if (!ModelState.IsValid)
+            {
+                return View(existSlider);
+            }
+
+            existSlider.Order = slider.Order;
+            existSlider.Title1 = slider.Title1;
+            existSlider.Title2 = slider.Title2;
+            existSlider.SubTitle = slider.SubTitle;
+            existSlider.SubTitleIcon = slider.SubTitleIcon;
+            existSlider.Desc = slider.Desc;
+            existSlider.BtnText = slider.BtnText;
+            existSlider.RedirectUrl = slider.RedirectUrl;
+
+            if (slider.ImageFile != null)
+            {
+                var newImageFile = FileManager.Save(slider.ImageFile, _env.WebRootPath, "main/uploads/sliders");
+                FileManager.Delete(_env.WebRootPath, "main/uploads/sliders", existSlider.Image);
+                existSlider.Image = newImageFile;
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Slider slider = _context.Sliders.FirstOrDefault(x => x.Id == id);
+
+            if (slider == null)
+                return RedirectToAction("error", "dashboard");
+
+            FileManager.Delete(_env.WebRootPath, "main/uploads/sliders", slider.Image);
+
+            _context.Sliders.Remove(slider);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

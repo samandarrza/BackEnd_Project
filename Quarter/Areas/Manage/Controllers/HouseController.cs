@@ -159,7 +159,7 @@ namespace Quarter.Areas.Manage.Controllers
                 poster.Name = newPosterName;
             }
 
-            var removedFiles = existHouse.HouseImages.FindAll(x => x.PosterStatus == null && !house.HouseImageIds.Contains(x.Id));
+            var removedFiles = existHouse.HouseImages.FindAll(x => x.PosterStatus == false && !house.HouseImageIds.Contains(x.Id));
             foreach (var item in removedFiles)
             {
                 FileManager.Delete(_env.WebRootPath, "main/uploads/houses", item.Name);

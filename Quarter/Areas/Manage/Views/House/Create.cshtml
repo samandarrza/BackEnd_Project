@@ -75,6 +75,11 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label asp-for="BuiltYear">BuiltYear</label>
+                        <input asp-for="BuiltYear" class="form-control">
+                        <span class="text-danger" asp-validation-for="BuiltYear"></span>
+                    </div>
+                    <div class="form-group">
                         <label asp-for="AminityIds">Aminities</label>
                         <select asp-for="AminityIds" class="form-control" asp-items="@(new SelectList(ViewBag.Aminities,nameof(Aminity.Id),nameof(Aminity.Name)))">
                         </select>

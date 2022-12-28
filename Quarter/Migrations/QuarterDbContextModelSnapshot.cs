@@ -474,7 +474,6 @@ namespace Quarter.Migrations
                         .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 

@@ -1,7 +1,13 @@
-﻿@using Quarter.Services
+﻿@using Microsoft.AspNetCore.Identity
+@using Quarter.Services
 @inject LayoutService layoutService
-
+@inject UserManager<AppUser> _userManager
 @{
+    AppUser user = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+    }
     Dictionary<string, string> settings = layoutService.GetSettings();
 }
 <!DOCTYPE html>
@@ -126,13 +132,31 @@
                         <div class="ltn__drop-menu user-menu">
                             <ul>
                                 <li>
-                                    <a href="#"><i class="icon-user"></i></a>
-                                    <ul>
-                                        <li><a href="~/">Sign in</a></li>
-                                        <li><a href="~/">Register</a></li>
-                                        <li><a href="~/">My Account</a></li>
-                                        <li><a href="~/">Wishlist</a></li>
-                                    </ul>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                                @if (user.Image != null)
+                                                {
+                                            <a href="#"><img width="90%" height="90%" style="border-radius:50px" src="~/main/uploads/userImage/@user.Image"></a> 
+                                                }
+                                                else{
+                                              <a href="#"><i class="icon-user"></i></a>
+                                                }
+                                            <ul>
+                                                <li>@user.FullName</li>
+                                                <li><a asp-action="index" asp-controller="account">My Account</a></li>
+                                                <li><a href="~/">Wishlist</a></li>
+                                                <li><a asp-action="logout" asp-controller="account">Logout</a></li>
+                                            </ul>
+                                        }
+                                        else{
+                                            <a href="#"><i class="icon-user"></i></a>
+                                            <ul>
+                                                <li><a asp-action="login" asp-controller="account">Sign in</a></li>
+                                                <li><a asp-action="register" asp-controller="account">Register</a></li>
+                                            </ul>
+                                        }
+
+                                    
                                 </li>
                             </ul>
                         </div>
@@ -736,6 +760,8 @@
     <script src="~/main/js/plugins.js"></script>
     <!-- Main JS -->
     <script src="~/main/js/main.js"></script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
 </html>

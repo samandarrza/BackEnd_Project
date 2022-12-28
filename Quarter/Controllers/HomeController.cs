@@ -17,7 +17,7 @@ namespace Quarter.Controllers
         {
             HomeViewModel homeVM = new HomeViewModel
             {
-                Sliders = _context.Sliders.ToList(),
+               Sliders = _context.Sliders.ToList(),
                Aminities = _context.Aminities.ToList(),
             };
             return View(homeVM);
