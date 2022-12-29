@@ -2,24 +2,32 @@
 <!-- SLIDER AREA START (slider-3) -->
     <div class="ltn__slider-area ltn__slider-3  section-bg-1">
         <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
-            <!-- ltn__slide-item -->
+
+            @foreach (var slider in Model.Sliders)
+            {
             <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3">
-                <div class="ltn__slide-item-inner">
+                <div class="ltn__slide-item-inner @(slider.Order%2==1? "":"text-right text-end")">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 align-self-center">
                                 <div class="slide-item-info">
                                     <div class="slide-item-info-inner ltn__slide-animation">
-                                        <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> Real Estate Agency</h6>
-                                        <h1 class="slide-title animated ">Find Your Dream <br> House By Us</h1>
+                                        <h6 class="slide-sub-title white-color--- animated"><span><i class="@slider.SubTitleIcon"></i></span> @slider.SubTitle</h6>
+                                        <h1 class="slide-title animated ">@slider.Title1 <br> @slider.Title2</h1>
                                         <div class="slide-brief animated">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                            <p>@slider.Desc</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="about.html" class="theme-btn-1 btn btn-effect-1">Make An Enquiry</a>
-                                            <a class="ltn__video-play-btn bg-white" href="https://www.youtube.com/embed/HnbMYzdjuBs?autoplay=1&amp;showinfo=0" data-rel="lightcase">
-                                                <i class="icon-play  ltn__secondary-color"></i>
-                                            </a>
+                                            <a href="about.html" class="theme-btn-1 btn btn-effect-1">@slider.BtnText</a>
+                                            @if (slider.Order%2==1)
+                                            {
+                                                <a class="ltn__video-play-btn bg-white" href="@slider.RedirectUrl" data-rel="lightcase">
+                                                    <i class="icon-play  ltn__secondary-color"></i>
+                                                </a>
+                                            }
+                                            else{
+                                            <a href="~/" class="btn btn-transparent btn-effect-3">LEARN MORE</a>
+                                            }                                               
                                         </div>
                                     </div>
                                 </div>
@@ -31,34 +39,8 @@
                     </div>
                 </div>
             </div>
-            <!-- ltn__slide-item -->
-            <div class="ltn__slide-item ltn__slide-item-2  ltn__slide-item-3-normal ltn__slide-item-3">
-                <div class="ltn__slide-item-inner  text-right text-end">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 align-self-center">
-                                <div class="slide-item-info">
-                                    <div class="slide-item-info-inner ltn__slide-animation">
-                                        <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> Real Estate Agency</h6>
-                                        <h1 class="slide-title animated ">The Right Place <br>of House Finding</h1>
-                                        <div class="slide-brief animated">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        </div>
-                                        <div class="btn-wrapper animated">
-                                            <a href="service.html" class="theme-btn-1 btn btn-effect-1">OUR SERVICES</a>
-                                            <a href="about.html" class="btn btn-transparent btn-effect-3">LEARN MORE</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide-item-img slide-img-left">
-                                    <img src="~/main/img/slider/21.png" alt="#">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
+
+        }
         </div>
     </div>
     <!-- SLIDER AREA END -->
@@ -82,35 +64,32 @@
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
                                             <select class="nice-select">
                                                 <option>Choose Area</option>
-                                                <option>chicago</option>
-                                                <option>London</option>
-                                                <option>Los Angeles</option>
-                                                <option>New York</option>
-                                                <option>New Jersey</option>
+                                                @foreach (var city in Model.Cities)
+                                            {
+                                                 <option>@city.Name</option>
+                                            }
                                             </select>
                                         </div> 
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
                                             <select class="nice-select">
                                                 <option>Property Status</option>
-                                                <option>Open house</option>
                                                 <option>Rent</option>
                                                 <option>Sale</option>
-                                                <option>Sold</option>
                                             </select>
                                         </div> 
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
                                             <select class="nice-select">
                                                 <option>Property Type</option>
-                                                <option>Apartment</option>
-                                                <option>Co-op</option>
-                                                <option>Condo</option>
-                                                <option>Single Family Home</option>
+                                                @foreach (var category in Model.Categories)
+                                                {
+                                                    <option>@category.Name</option>
+                                                }
+                                                
                                             </select>
                                         </div>
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
                                             <div class="btn-wrapper text-center mt-0">
-                                                <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                                <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Find Now</a>
+                                                <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Find Now</button>
                                             </div>
                                         </div>
                                     </form>
@@ -121,30 +100,27 @@
                                     <form action="#" class="ltn__car-dealer-form-box row">
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
                                             <select class="nice-select">
-                                                <option>Choose Area</option>
-                                                <option>chicago</option>
-                                                <option>London</option>
-                                                <option>Los Angeles</option>
-                                                <option>New York</option>
-                                                <option>New Jersey</option>
+                                            <option>Choose Area</option>
+                                            @foreach (var city in Model.Cities)
+                                            {
+                                                <option>@city.Name</option>
+                                            }
                                             </select>
                                         </div> 
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
                                             <select class="nice-select">
                                                 <option>Property Status</option>
-                                                <option>Open house</option>
                                                 <option>Rent</option>
                                                 <option>Sale</option>
-                                                <option>Sold</option>
                                             </select>
                                         </div> 
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
                                             <select class="nice-select">
-                                                <option>Property Type</option>
-                                                <option>Apartment</option>
-                                                <option>Co-op</option>
-                                                <option>Condo</option>
-                                                <option>Single Family Home</option>
+                                            <option>Property Type</option>
+                                            @foreach (var category in Model.Categories)
+                                            {
+                                                    <option>@category.Name</option>
+                                            }
                                             </select>
                                         </div>
                                         <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">

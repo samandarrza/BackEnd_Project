@@ -26,7 +26,7 @@ namespace Quarter.Areas.Manage.Controllers
             .Include(x=>x.HouseImages)
             .Include(x => x.City)
             .Include(x=>x.Broker);
-            var model = PaginatedList<House>.Create(query, page, 4);
+            var model = PaginatedList<House>.Create(query, page, 20);
             return View(model);
         }
         public IActionResult Create()
@@ -60,12 +60,31 @@ namespace Quarter.Areas.Manage.Controllers
 
             house.HouseImages = new List<HouseImage>();
 
+            if (house.PosterFile == null)
+            {
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Brokers = _context.Brokers.ToList();
+                ViewBag.Cities = _context.Cities.ToList();
+                ViewBag.Aminities = _context.Aminities.ToList();
+                ModelState.AddModelError("PosterFile", "Required");
+                return View();
+            }
             HouseImage poster = new HouseImage
             {
                 Name = FileManager.Save(house.PosterFile, _env.WebRootPath, "main/uploads/houses"),
                 PosterStatus = true,
             };
             house.HouseImages.Add(poster);
+
+            if (house.ImageFiles == null)
+            {
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Brokers = _context.Brokers.ToList();
+                ViewBag.Cities = _context.Cities.ToList();
+                ViewBag.Aminities = _context.Aminities.ToList();
+                ModelState.AddModelError("ImageFiles", "Required");
+                return View();
+            }
 
             foreach (var imgFile in house.ImageFiles)
             {
@@ -78,6 +97,17 @@ namespace Quarter.Areas.Manage.Controllers
 
             house.HouseAmenities = new List<HouseAmenity>();
 
+            if (house.AminityIds == null || house.AminityIds.Count !=4)
+            {
+                ViewBag.Categories = _context.Categories.ToList();
+                ViewBag.Brokers = _context.Brokers.ToList();
+                ViewBag.Cities = _context.Cities.ToList();
+                ViewBag.Aminities = _context.Aminities.ToList();
+                ModelState.AddModelError("AminityIds", "Amenity 4 pieces should be selected");
+                return View();
+            }
+
+
             foreach (var aminityId in house.AminityIds)
             {
                 if (!_context.Aminities.Any(x => x.Id == aminityId))
@@ -87,7 +117,7 @@ namespace Quarter.Areas.Manage.Controllers
                     ViewBag.Cities = _context.Cities.ToList();
                     ViewBag.Aminities = _context.Aminities.ToList();
 
-                    ModelState.AddModelError("AminityIds", "Aminity not found");
+                    ModelState.AddModelError("AminityIds", "Amenity not found");
                     return View();
                 }
 
@@ -97,7 +127,7 @@ namespace Quarter.Areas.Manage.Controllers
                 };
                 house.HouseAmenities.Add(houseAminity);
             }
-
+            house.Status = true;
             _context.Houses.Add(house);
             _context.SaveChanges();
 
@@ -227,5 +257,6 @@ namespace Quarter.Areas.Manage.Controllers
             return RedirectToAction("index");
 
         }
+
     }
 }

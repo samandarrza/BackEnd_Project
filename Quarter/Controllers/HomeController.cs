@@ -19,6 +19,8 @@ namespace Quarter.Controllers
             {
                Sliders = _context.Sliders.ToList(),
                Aminities = _context.Aminities.ToList(),
+               Cities = _context.Cities.ToList(),
+               Categories = _context.Categories.ToList(),
             };
             return View(homeVM);
         }

@@ -9,6 +9,7 @@ namespace Quarter.Models
         public string Fullname { get; set; }
         public string? Image { get; set; }
         public string? Desc { get; set; }
+        public List<House>? Houses { get; set; }
 
     }
 }
