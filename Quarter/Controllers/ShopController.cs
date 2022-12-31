@@ -15,29 +15,29 @@ namespace Quarter.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int page = 1, List<int>? CityIds = null, List<int>? AmenityIds = null, List<int>? CategotyIds = null, List<int>? BrokerIds = null,
-            decimal? minPrice = null, decimal? maxPrice = null, string? sort = "AToZ")
+        public IActionResult Index(int page = 1, List<int>? cityId = null, List<int>? aminityId = null, List<int>? categoryId = null, List<int>? brokerId = null,
+            decimal? minPrice = null, decimal? maxPrice = null, string? sort = "", string? search = "")
         {
-            ViewBag.SelectedCityIds = CityIds;
-            ViewBag.SelectedAmenityIds = AmenityIds;
-            ViewBag.SelectedCategoryIds = CategotyIds;
-            ViewBag.SelectedBrokerIds = BrokerIds;
+            ViewBag.SelectedCityIds = cityId;
+            ViewBag.SelectedAmenityIds = aminityId;
+            ViewBag.SelectedCategoryIds = categoryId;
+            ViewBag.SelectedBrokerIds = brokerId;
 
 
             var houses = _context.Houses.Include(x => x.HouseImages).Include(x => x.HouseAmenities).ThenInclude(x=>x.Amenity)
                 .Include(x=> x.City).Include(x => x.Broker).Include(x => x.Category).AsQueryable();
 
-            if (CityIds != null && CityIds.Count > 0)
-                houses = houses.Where(x => CityIds.Contains(x.CityId));
+            if (cityId != null && cityId.Count > 0)
+                houses = houses.Where(x => cityId.Contains(x.CityId));
 
-            if (CategotyIds != null && CategotyIds.Count > 0)
-                houses = houses.Where(x => CategotyIds.Contains(x.CategoryId));
+            if (categoryId != null && categoryId.Count > 0)
+                houses = houses.Where(x => categoryId.Contains(x.CategoryId));
 
-            if (BrokerIds != null && BrokerIds.Count > 0)
-                houses = houses.Where(x => BrokerIds.Contains(x.BrokerId));
+            if (brokerId != null && brokerId.Count > 0)
+                houses = houses.Where(x => brokerId.Contains(x.BrokerId));
 
-            if (AmenityIds != null && AmenityIds.Count > 0)
-                houses = houses.Where(x => x.HouseAmenities.Any(ha=>AmenityIds.Contains(ha.AmenityId)));
+            if (aminityId != null && aminityId.Count > 0)
+                houses = houses.Where(x => x.HouseAmenities.Any(ha=> aminityId.Contains(ha.AmenityId)));
 
 
             if (minPrice != null && maxPrice != null)
@@ -47,6 +47,9 @@ namespace Quarter.Controllers
 
             switch (sort)
             {
+                case "AToZ":
+                    houses = houses.OrderBy(x => x.Name);
+                    break;
                 case "ZToA":
                     houses = houses.OrderByDescending(x => x.Name);
                     break;
@@ -57,7 +60,6 @@ namespace Quarter.Controllers
                     houses = houses.OrderByDescending(x => x.SalePrice);
                     break;
                 default:
-                    houses = houses.OrderBy(x => x.Name);
                     break;
             }
 

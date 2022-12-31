@@ -17,10 +17,13 @@ namespace Quarter.Controllers
         {
             HomeViewModel homeVM = new HomeViewModel
             {
-               Sliders = _context.Sliders.ToList(),
-               Aminities = _context.Aminities.ToList(),
-               Cities = _context.Cities.ToList(),
-               Categories = _context.Categories.ToList(),
+                Aminities = _context.Aminities.ToList(),
+                Sliders = _context.Sliders.ToList(),
+                Brokers = _context.Brokers.ToList(),
+                Categories = _context.Categories.ToList(),
+                Cities = _context.Cities.ToList(),
+                Houses = _context.Houses.Include(x=>x.HouseImages).Include(x=>x.HouseAmenities).ThenInclude(x => x.Amenity).ToList(),
+                Settings = _context.Settings.ToList(),
             };
             return View(homeVM);
         }
