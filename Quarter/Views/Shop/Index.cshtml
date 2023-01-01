@@ -316,12 +316,14 @@
                             <!-- Price Filter Widget -->
                             <div class="widget--- ltn__price-filter-widget">
                                 <h4 class="ltn__widget-title ltn__widget-title-border---">Filter by price</h4>
+                            <input type="hidden" form="filter-form" name="minPrice" id="minPriceInput" value="@ViewBag.SelectedMinPrice" />
+                            <input type="hidden" form="filter-form" name="maxPrice" id="maxPriceInput" value="@ViewBag.SelectedMaxPrice" />
                                 <div class="price_filter">
                                     <div class="price_slider_amount">
                                         <input form="filter-form" type="submit"  value="Your range:"/> 
                                         <input type="text" class="amount" name="price"  placeholder="Add Your Price" /> 
                                     </div>
-                                    <div class="slider-range"></div>
+                                <div class="slider-range"></div>
                                 </div>
                             </div>
                             <hr>
@@ -369,3 +371,23 @@
         </div>
     </div>
     <!-- PRODUCT DETAILS AREA END -->
+
+@section Scripts{
+    <script>
+         $( ".slider-range" ).slider({
+            range: true,
+            min: @Model.MinPrice,
+            max: @Model.MaxPrice,
+            values: [@ViewBag.SelectedMinPrice, @ViewBag.SelectedMaxPrice],
+            slide: function( event, ui ) {
+                $( ".amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            },
+            change: function (event, ui) {
+                $("#minPriceInput").val(ui.values[0]);
+                $("#maxPriceInput").val(ui.values[1]);
+            }
+        });
+        $( ".amount" ).val( "$" + $( ".slider-range" ).slider( "values", 0 ) +
+        " - $" + $( ".slider-range" ).slider( "values", 1 ) ); 
+    </script>
+}

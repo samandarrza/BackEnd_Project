@@ -22,6 +22,8 @@ namespace Quarter.Controllers
             ViewBag.SelectedAmenityIds = aminityId;
             ViewBag.SelectedCategoryIds = categoryId;
             ViewBag.SelectedBrokerIds = brokerId;
+            ViewBag.SelectedSearch = search;
+
 
 
             var houses = _context.Houses.Include(x => x.HouseImages).Include(x => x.HouseAmenities).ThenInclude(x=>x.Amenity)
@@ -38,11 +40,14 @@ namespace Quarter.Controllers
 
             if (aminityId != null && aminityId.Count > 0)
                 houses = houses.Where(x => x.HouseAmenities.Any(ha=> aminityId.Contains(ha.AmenityId)));
-
+            
+            if (search != null)
+                houses = houses.Where(x => x.Name.Contains(search));
 
             if (minPrice != null && maxPrice != null)
             {
                 houses = houses.Where(x => x.SalePrice >= minPrice && x.SalePrice <= maxPrice);
+
             }
 
             switch (sort)

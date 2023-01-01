@@ -23,8 +23,8 @@
                         <td>@city.Name</td>
                         <td></td>
                         <td><a asp-action="edit" asp-route-id="@city.Id"><i class="fa fa-edit text-primary"></i></a></td>
-                        <td><a asp-action="delete" asp-route-id="@city.Id"><i class="fa fa-trash text-danger"></i></a></td>
-                </tr>
+                        <td><a class="trash-btn" asp-action="delete" asp-route-id="@city.Id"><i class="fa fa-trash text-danger"></i></a></td>
+                    </tr>
             }
         </tbody>
     </table>

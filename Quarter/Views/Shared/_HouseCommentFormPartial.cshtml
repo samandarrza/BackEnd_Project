@@ -1,0 +1,14 @@
+﻿@model CommentCreateViewModel
+<div class="ltn__comment-reply-area ltn__form-box mb-30">
+    <form asp-action="comment" method="post">
+        <h4>Add a Review</h4>
+        <div class="input-item input-item-textarea ltn__custom-icon">
+            <textarea asp-for="Text" placeholder="Type your comments...."></textarea>
+            <span class="text-danger" asp-validation-for="Text"> </span>
+        </div>
+        <input type="hidden" value="@Model.HouseId" name="HouseId" />
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
+    </form>
+</div>
+

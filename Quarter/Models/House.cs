@@ -42,5 +42,6 @@ namespace Quarter.Models
 
         public List<HouseAmenity>? HouseAmenities { get; set; }
         public List<HouseImage>? HouseImages { get; set; }
+        public List<Comment>? Comments { get; set; }
     }
 }

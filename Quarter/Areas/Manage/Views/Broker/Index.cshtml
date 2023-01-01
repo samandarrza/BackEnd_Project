@@ -19,12 +19,12 @@
             @foreach (var broker in Model)
             {
                 <tr>
-                        <td><img width="36px" style="border-radius:10px" src="~/main/img/team/@broker.Image" class="m-1"></td>
+                        <td><img width="36px" style="border-radius:10px" src="~/main/uploads/brokerImage/@broker.Image" class="m-1"></td>
                         <td>@broker.Fullname</td>
                         <td></td>
                         <td><a asp-action="edit" asp-route-id="@broker.Id"><i class="fa fa-edit text-primary"></i></a></td>
-                        <td><a asp-action="delete" asp-route-id="@broker.Id"><i class="fa fa-trash text-danger"></i></a></td>
-                </tr>
+                        <td><a class="trash-btn" asp-action="delete" asp-route-id="@broker.Id"><i class="fa fa-trash text-danger"></i></a></td>
+                    </tr>
             }
         </tbody>
     </table>

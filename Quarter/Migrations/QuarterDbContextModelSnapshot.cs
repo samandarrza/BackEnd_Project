@@ -246,7 +246,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Aminities");
+                    b.ToTable("Aminities", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.Broker", b =>
@@ -270,7 +270,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brokers");
+                    b.ToTable("Brokers", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.Category", b =>
@@ -290,7 +290,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.City", b =>
@@ -307,7 +307,41 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
+                });
+
+            modelBuilder.Entity("Quarter.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HouseId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("HouseId");
+
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.House", b =>
@@ -380,7 +414,7 @@ namespace Quarter.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Houses");
+                    b.ToTable("Houses", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.HouseAmenity", b =>
@@ -403,7 +437,7 @@ namespace Quarter.Migrations
 
                     b.HasIndex("HouseId");
 
-                    b.ToTable("HousesAmenities");
+                    b.ToTable("HousesAmenities", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.HouseImage", b =>
@@ -429,7 +463,7 @@ namespace Quarter.Migrations
 
                     b.HasIndex("HouseId");
 
-                    b.ToTable("HouseImages");
+                    b.ToTable("HouseImages", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.Setting", b =>
@@ -452,7 +486,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings");
+                    b.ToTable("Settings", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.Slider", b =>
@@ -505,7 +539,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders");
+                    b.ToTable("Sliders", (string)null);
                 });
 
             modelBuilder.Entity("Quarter.Models.AppUser", b =>
@@ -573,22 +607,41 @@ namespace Quarter.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Quarter.Models.Comment", b =>
+                {
+                    b.HasOne("Quarter.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Quarter.Models.House", "House")
+                        .WithMany("Comments")
+                        .HasForeignKey("HouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("House");
+                });
+
             modelBuilder.Entity("Quarter.Models.House", b =>
                 {
                     b.HasOne("Quarter.Models.Broker", "Broker")
-                        .WithMany()
+                        .WithMany("Houses")
                         .HasForeignKey("BrokerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Quarter.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Houses")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Quarter.Models.City", "City")
-                        .WithMany()
+                        .WithMany("Houses")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -630,8 +683,25 @@ namespace Quarter.Migrations
                     b.Navigation("House");
                 });
 
+            modelBuilder.Entity("Quarter.Models.Broker", b =>
+                {
+                    b.Navigation("Houses");
+                });
+
+            modelBuilder.Entity("Quarter.Models.Category", b =>
+                {
+                    b.Navigation("Houses");
+                });
+
+            modelBuilder.Entity("Quarter.Models.City", b =>
+                {
+                    b.Navigation("Houses");
+                });
+
             modelBuilder.Entity("Quarter.Models.House", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("HouseAmenities");
 
                     b.Navigation("HouseImages");

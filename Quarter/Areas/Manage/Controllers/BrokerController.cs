@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Quarter.DAL;
+using Quarter.Helpers;
 using Quarter.Models;
 
 namespace Quarter.Areas.Manage.Controllers
@@ -8,10 +9,12 @@ namespace Quarter.Areas.Manage.Controllers
     public class BrokerController : Controller
     {
         private readonly QuarterDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public BrokerController(QuarterDbContext context)
+        public BrokerController(QuarterDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
         public IActionResult Index()
         {
@@ -38,6 +41,11 @@ namespace Quarter.Areas.Manage.Controllers
             {
                 ModelState.AddModelError("Name", "Bu adda data var");
                 return View();
+            }
+
+            if (broker.ProfilFile != null)
+            {
+                broker.Image = FileManager.Save(broker.ProfilFile, _env.WebRootPath, "main/uploads/brokerImage");
             }
 
             _context.Brokers.Add(broker);
@@ -77,5 +85,18 @@ namespace Quarter.Areas.Manage.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            Broker broker = _context.Brokers.FirstOrDefault(x => x.Id == id);
+
+            if (broker == null)
+                return RedirectToAction("error", "dashboard");
+
+            _context.Brokers.Remove(broker);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

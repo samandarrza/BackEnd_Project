@@ -36,7 +36,7 @@ namespace Quarter.Areas.Manage.Controllers
                 {
                     return View();
                 }
-                if (_context.Cities.Any(x => x.Name == category.Name))
+                if (_context.Categories.Any(x => x.Name == category.Name))
                 {
                     ModelState.AddModelError("Name", "Bu adda data var");
                     return View();
@@ -77,6 +77,18 @@ namespace Quarter.Areas.Manage.Controllers
                 }
                 existCategory.Name = category.Name;
                 _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            public IActionResult Delete(int id)
+            {
+                Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
+
+                if (category == null)
+                    return RedirectToAction("error", "dashboard");
+
+                _context.Categories.Remove(category);
+                _context.SaveChanges();
+
                 return RedirectToAction("Index");
             }
         }

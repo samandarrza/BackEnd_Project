@@ -76,5 +76,17 @@ namespace Quarter.Areas.Manage.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            City city = _context.Cities.FirstOrDefault(x => x.Id == id);
+
+            if (city == null)
+                return RedirectToAction("error", "dashboard");
+
+            _context.Cities.Remove(city);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

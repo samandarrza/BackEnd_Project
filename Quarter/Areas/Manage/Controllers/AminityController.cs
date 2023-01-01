@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Quarter.DAL;
+using Quarter.Helpers;
 using Quarter.Models;
 
 namespace Quarter.Areas.Manage.Controllers
@@ -76,6 +77,19 @@ namespace Quarter.Areas.Manage.Controllers
             existAminity.Name = aminity.Name;
             existAminity.Icon = aminity.Icon;
             _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Aminity aminity = _context.Aminities.FirstOrDefault(x => x.Id == id);
+
+            if (aminity == null)
+                return RedirectToAction("error", "dashboard");
+
+            _context.Aminities.Remove(aminity);
+            _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
