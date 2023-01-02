@@ -11,6 +11,6 @@ namespace Quarter.ViewModels
         public List<City> Cities { get; set; }
         public List<House> Houses { get; set; }
         public List<Setting> Settings { get; set; }
-
+        public List<About> Abouts { get; set; }
     }
 }

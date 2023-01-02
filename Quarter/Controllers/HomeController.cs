@@ -24,6 +24,7 @@ namespace Quarter.Controllers
                 Cities = _context.Cities.ToList(),
                 Houses = _context.Houses.Include(x=>x.HouseImages).Include(x=>x.HouseAmenities).ThenInclude(x => x.Amenity).ToList(),
                 Settings = _context.Settings.ToList(),
+                Abouts = _context.Abouts.ToList(),
             };
             return View(homeVM);
         }

@@ -4,7 +4,7 @@
 @inject UserManager<AppUser> _userManager
 @{
     AppUser user = null;
-    if (User.Identity.IsAuthenticated)
+    if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
     {
         user = _userManager.FindByNameAsync(User.Identity.Name).Result;
     }
@@ -132,7 +132,7 @@
                         <div class="ltn__drop-menu user-menu">
                             <ul>
                                 <li>
-                                        @if (User.Identity.IsAuthenticated)
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
                                         {
                                                 @if (user.Image != null)
                                                 {

@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Quarter.DAL;
 using Quarter.Models;
+using System.Data;
 
 namespace Quarter.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "SuperAdmin,Admin,Editor")]
+
     public class SettingController : Controller
     {
         private readonly QuarterDbContext _context;

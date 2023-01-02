@@ -1,0 +1,53 @@
+﻿@model About
+<div class="container-fluid">
+    <h4>About / Create</h4>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form asp-action="create" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Title">Title</label>
+                        <input asp-for="Title" type="text" class="form-control" id="nameInput">
+                        <span class="text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Desc">Desc</label>
+                        <input asp-for="Desc" type="text" class="form-control" id="nameInput">
+                        <span class="text-danger" asp-validation-for="Desc"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Text">Text</label>
+                        <input asp-for="Text" type="text" class="form-control" id="nameInput">
+                        <span class="text-danger" asp-validation-for="Text"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BtnUrl">BtnUrl</label>
+                        <input asp-for="BtnUrl" type="text" class="form-control" id="nameInput">
+                        <span class="text-danger" asp-validation-for="BtnUrl"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BtnText">BtnText</label>
+                        <input asp-for="BtnText" type="text" class="form-control" id="nameInput">
+                        <span class="text-danger" asp-validation-for="BtnText"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="VideoUrl">VideoUrl</label>
+                        <input asp-for="VideoUrl" type="text" class="form-control" id="nameInput">
+                        <span class="text-danger" asp-validation-for="VideoUrl"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="VideoImageFile">VideoImage File</label>
+                        <span class="text-danger" asp-validation-for="VideoImageFile"></span>
+                        <input class="form-control" asp-for="VideoImageFile" placeholder="Image"><br />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageFile">Image File</label>
+                        <span class="text-danger" asp-validation-for="ImageFile"></span>
+                        <input class="form-control" asp-for="ImageFile" placeholder="Image"><br />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

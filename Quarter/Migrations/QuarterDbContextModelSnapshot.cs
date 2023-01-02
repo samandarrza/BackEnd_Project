@@ -226,6 +226,57 @@ namespace Quarter.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Quarter.Models.About", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BtnText")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("BtnUrl")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Desc")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("VideoImage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("VideoUrl")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Abouts");
+                });
+
             modelBuilder.Entity("Quarter.Models.Aminity", b =>
                 {
                     b.Property<int>("Id")
@@ -246,7 +297,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Aminities", (string)null);
+                    b.ToTable("Aminities");
                 });
 
             modelBuilder.Entity("Quarter.Models.Broker", b =>
@@ -270,7 +321,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brokers", (string)null);
+                    b.ToTable("Brokers");
                 });
 
             modelBuilder.Entity("Quarter.Models.Category", b =>
@@ -290,7 +341,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Quarter.Models.City", b =>
@@ -307,7 +358,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities", (string)null);
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("Quarter.Models.Comment", b =>
@@ -341,7 +392,7 @@ namespace Quarter.Migrations
 
                     b.HasIndex("HouseId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Quarter.Models.House", b =>
@@ -414,7 +465,7 @@ namespace Quarter.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Houses", (string)null);
+                    b.ToTable("Houses");
                 });
 
             modelBuilder.Entity("Quarter.Models.HouseAmenity", b =>
@@ -437,7 +488,7 @@ namespace Quarter.Migrations
 
                     b.HasIndex("HouseId");
 
-                    b.ToTable("HousesAmenities", (string)null);
+                    b.ToTable("HousesAmenities");
                 });
 
             modelBuilder.Entity("Quarter.Models.HouseImage", b =>
@@ -463,7 +514,7 @@ namespace Quarter.Migrations
 
                     b.HasIndex("HouseId");
 
-                    b.ToTable("HouseImages", (string)null);
+                    b.ToTable("HouseImages");
                 });
 
             modelBuilder.Entity("Quarter.Models.Setting", b =>
@@ -486,7 +537,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings", (string)null);
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("Quarter.Models.Slider", b =>
@@ -539,7 +590,7 @@ namespace Quarter.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders", (string)null);
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("Quarter.Models.AppUser", b =>

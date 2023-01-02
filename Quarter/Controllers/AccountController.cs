@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Quarter.DAL;
 using Quarter.Helpers;
@@ -23,22 +24,52 @@ namespace Quarter.Controllers
             _signInManager = signInManager;
             _env = env;
         }
-        public IActionResult Index()
+
+        [Authorize(Roles ="Member")]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            AppUser user =  await _userManager.FindByNameAsync(User.Identity.Name);
+
+            MemberUpdateViewModel memberVM = new MemberUpdateViewModel
+            {
+                UserName = user.UserName,
+                FullName = user.FullName,
+                Image = user.Image,
+                Email = user.Email,
+            };
+            return View(memberVM);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(MemberUpdateViewModel memberVM)
+        {
+            return Ok(memberVM);
+        }
+
+
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(MemberLoginViewModel memberVM)
+        public async Task<IActionResult> Login(MemberLoginViewModel memberVM, string returnUrl)
         {
             AppUser user = await _userManager.FindByNameAsync(memberVM.UserName);
 
             if (user == null)
+            {
                 ModelState.AddModelError("", "Username or Password is incorrect");
+                return View();
+            }
+                
+            var roles = await _userManager.GetRolesAsync(user);
+
+            if (!roles.Contains("Member"))
+            {
+                ModelState.AddModelError("", "Username or Password is incorrect!");
+                return View();
+            }
 
             var result = await _signInManager.PasswordSignInAsync(user, memberVM.Password, false, true);
 
@@ -47,6 +78,9 @@ namespace Quarter.Controllers
                 ModelState.AddModelError("", "Username or Password is incorrect");
                 return View();
             }
+
+            if (returnUrl != null)
+                return Redirect(returnUrl);
 
             return RedirectToAction("index", "home");
         }
@@ -96,6 +130,7 @@ namespace Quarter.Controllers
                 }
                 return View();
             }
+            await _userManager.AddToRoleAsync(user, "Member");
 
             return RedirectToAction("login");
         }

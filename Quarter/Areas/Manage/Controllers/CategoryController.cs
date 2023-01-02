@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Cms;
 using Quarter.DAL;
 using Quarter.Models;
+using System.Data;
 
 namespace Quarter.Areas.Manage.Controllers
 {
     namespace Quarter.Areas.Manage.Controllers
     {
         [Area("manage")]
+        [Authorize(Roles = "SuperAdmin,Admin,Editor")]
+
         public class CategoryController : Controller
         {
             private readonly QuarterDbContext _context;

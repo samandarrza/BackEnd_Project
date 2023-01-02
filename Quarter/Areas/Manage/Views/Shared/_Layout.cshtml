@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> _userManager
+@{
+	AppUser user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -71,6 +76,16 @@
 					<li class="sidebar-item">
 						<a class="sidebar-link" asp-action="index" asp-controller="setting">
 							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Settings</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" asp-action="index" asp-controller="about">
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Abouts</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" asp-action="index" asp-controller="feature">
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Features</span>
 						</a>
 					</li>
 				</ul>
@@ -223,7 +238,7 @@
 							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-								<img src="~/manage/img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+								<img src="~/manage/img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="@user.FullName" /> <span class="text-dark">@user.FullName</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" asp-action="index" asp-controller="account"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
