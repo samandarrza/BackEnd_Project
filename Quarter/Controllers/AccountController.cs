@@ -40,10 +40,67 @@ namespace Quarter.Controllers
             return View(memberVM);
         }
 
+        [Authorize(Roles = "Member")]
         [HttpPost]
         public async Task<IActionResult> Index(MemberUpdateViewModel memberVM)
         {
-            return Ok(memberVM);
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (user == null)
+                return RedirectToAction("login");
+
+            if (user.NormalizedUserName != memberVM.UserName.ToUpper() && _context.Users.Any(x => x.NormalizedUserName == memberVM.UserName.ToUpper()))
+                ModelState.AddModelError("Username", "Username has already taken");
+
+            if (user.NormalizedEmail != memberVM.Email.ToUpper() && _context.Users.Any(x => x.NormalizedEmail == memberVM.Email.ToUpper()))
+                ModelState.AddModelError("Email", "Email has already taken");
+
+            if (!ModelState.IsValid)
+                return View();
+
+            if (memberVM.ImageFile != null)
+            {
+                var newImage = FileManager.Save(memberVM.ImageFile, _env.WebRootPath, "main/uploads/userImage");
+
+                if (user.Image != null)
+                    FileManager.Delete(_env.WebRootPath, "main/uploads/userImage", user.Image);
+
+                user.Image = newImage;
+            }
+
+            if (memberVM.Password != null)
+            {
+                if (memberVM.CurrentPassword == null)
+                {
+                    ModelState.AddModelError("CurrentPassword", "CurrentPassword is required!");
+                    return View();
+                }
+
+                if (!await _userManager.CheckPasswordAsync(user, memberVM.CurrentPassword))
+                {
+                    ModelState.AddModelError("CurrentPassword", "CurrentPassword is not correct!");
+                    return View();
+                }
+
+                var changePassword = await _userManager.ChangePasswordAsync(user, memberVM.CurrentPassword, memberVM.Password);
+
+                if (!changePassword.Succeeded)
+                {
+                    foreach (var item in changePassword.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                    return View();
+                }
+            }
+
+            user.UserName = memberVM.UserName;
+            user.FullName = memberVM.FullName;
+            user.Email = memberVM.Email;
+
+            var result = await _userManager.UpdateAsync(user);
+            await _signInManager.SignInAsync(user, false);
+            return RedirectToAction("index");
         }
 
 

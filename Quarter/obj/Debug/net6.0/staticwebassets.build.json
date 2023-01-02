@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "o2xMe3brqft50Ni8jYGGKyvLjn/rycOb2X3uWdOMdQ0=",
+  "Hash": "jT7YS12p1AiOYSw/ifOrK7WZ3okOjq/Pdeevzn++90E=",
   "Source": "Quarter",
   "BasePath": "_content/Quarter",
   "Mode": "Default",
@@ -6800,12 +6800,12 @@
       "OriginalItemSpec": "wwwroot\\main\\uploads\\sliders\\b2aa3bde-dcfd-4f9c-975b-d42b3bf84cf921.png"
     },
     {
-      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\userImage\\02f282cf-781c-44dc-9cc1-5a28eddc04fce05aa85ac9.jpg",
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\userImage\\91223ecf-c846-4adc-87f5-e1211f22bd148.jpg",
       "SourceId": "Quarter",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
       "BasePath": "_content/Quarter",
-      "RelativePath": "main/uploads/userImage/02f282cf-781c-44dc-9cc1-5a28eddc04fce05aa85ac9.jpg",
+      "RelativePath": "main/uploads/userImage/91223ecf-c846-4adc-87f5-e1211f22bd148.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -6814,41 +6814,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main\\uploads\\userImage\\02f282cf-781c-44dc-9cc1-5a28eddc04fce05aa85ac9.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\userImage\\38358684-5012-44f7-8ca0-98c874ee2134e05aa85ac9.jpg",
-      "SourceId": "Quarter",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
-      "BasePath": "_content/Quarter",
-      "RelativePath": "main/uploads/userImage/38358684-5012-44f7-8ca0-98c874ee2134e05aa85ac9.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main\\uploads\\userImage\\38358684-5012-44f7-8ca0-98c874ee2134e05aa85ac9.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\userImage\\5c150841-c688-47e6-a9ff-b5b34450e68821.png",
-      "SourceId": "Quarter",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
-      "BasePath": "_content/Quarter",
-      "RelativePath": "main/uploads/userImage/5c150841-c688-47e6-a9ff-b5b34450e68821.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main\\uploads\\userImage\\5c150841-c688-47e6-a9ff-b5b34450e68821.png"
+      "OriginalItemSpec": "wwwroot\\main\\uploads\\userImage\\91223ecf-c846-4adc-87f5-e1211f22bd148.jpg"
     },
     {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\userImage\\f99f9dd0-44b8-4ce3-8505-26e01472448f1.jpg",

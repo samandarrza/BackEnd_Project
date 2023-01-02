@@ -305,7 +305,9 @@
                                 <li>
                                     <label class="checkbox-item" for="aminity-@aminity.Id">
                                         @aminity.Name
-                                        <input form="filter-form" type="checkbox" @(ViewBag.SelectedBrokerIds.Contains(aminity.Id)?"checked":"") name="aminityId" id="aminity-@aminity.Id" value="@aminity.Id">
+                                        <input form="filter-form" type="checkbox" 
+                                        @(ViewBag.SelectedBrokerIds.Contains(aminity.Id)?"checked":"") name="aminityId" 
+                                        id="aminity-@aminity.Id" value="@aminity.Id">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="categorey-no"></span>
