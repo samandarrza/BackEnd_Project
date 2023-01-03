@@ -21,7 +21,9 @@ namespace Quarter.Areas.Manage.Controllers
         }
         public IActionResult Index(int page = 1)
         {
-            var model = _context.Aminities.ToList();
+            var model = _context.Aminities.Skip((page - 1) * 10).Take(10).ToList();
+            ViewBag.Page = page;
+            ViewBag.TotalPage = (int)Math.Ceiling(_context.Sliders.Count() / 10d);
             return View(model);
         }
         public IActionResult Create()
