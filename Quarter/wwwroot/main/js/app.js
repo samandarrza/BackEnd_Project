@@ -6,10 +6,11 @@
     fetch(url)
         .then(response => {
             if (!response.ok) {
-                alert("bitib")
+                toastr["error"]("Sold!")
                 return;
             }
             else {
+                toastr["error"]("Added!")
                 return response.text();
             }
         }).then(html => {

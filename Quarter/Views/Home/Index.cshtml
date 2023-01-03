@@ -360,7 +360,7 @@
                             <a asp-action="detail" asp-controller="house" asp-route-id="@house.Id"><img width="100%" height="280px" src="~/main/uploads/houses/@house.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge bg-green">@(house.Status==true?"On Sale":"Sold")</li>
+                                    <li class="sale-badge bg-@(house.Status==true?"green":"red")">@(house.Status==true?"On Sale":"Sold")</li>
                                 </ul>
                             </div>
                             <div class="product-img-location-gallery">

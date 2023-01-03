@@ -30,6 +30,7 @@ namespace Quarter.Areas.Manage.Controllers
             .Include(x=>x.HouseImages)
             .Include(x => x.City)
             .Include(x=>x.Broker);
+            
             var model = PaginatedList<House>.Create(query, page, 20);
             return View(model);
         }
@@ -132,6 +133,7 @@ namespace Quarter.Areas.Manage.Controllers
                 house.HouseAmenities.Add(houseAminity);
             }
             house.Status = true;
+         
             _context.Houses.Add(house);
             _context.SaveChanges();
 
