@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "byYDUtf9el60B4Y8hSCdrktIg2nDGwSS/aSnizr27Lw=",
+  "Hash": "G0/MQwv/9vjlVBo6BEumzOR8A6ARwpBC6XGi6poJg1M=",
   "Source": "Quarter",
   "BasePath": "_content/Quarter",
   "Mode": "Default",
@@ -3791,6 +3791,23 @@
       "OriginalItemSpec": "wwwroot\\main\\img\\others\\10.png"
     },
     {
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\img\\others\\11.jpg",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "main/img/others/11.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\img\\others\\11.jpg"
+    },
+    {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\img\\others\\11.png",
       "SourceId": "Quarter",
       "SourceType": "Discovered",
@@ -3823,6 +3840,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\main\\img\\others\\12.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\img\\others\\13.jpg",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "main/img/others/13.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\img\\others\\13.jpg"
     },
     {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\img\\others\\13.png",

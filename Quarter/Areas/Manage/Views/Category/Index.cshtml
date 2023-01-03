@@ -1,4 +1,9 @@
 ﻿@model List<Category>
+@{
+    int selectedPage = ViewBag.Page;
+    int totalPage = ViewBag.TotalPage;
+    int order = (selectedPage - 1) * 5;
+}
 <div class="container-fluid">
     <div class="d-flex justify-content-between mx-2">
         <h3><b>Categories</b></h3>
@@ -26,6 +31,26 @@
                 }
             </tbody>
         </table>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(selectedPage == 1 ? "disabled":"")">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage-1)" tabindex="-1">Previous</a>
+                    </li>
+                    @for (var i = 1; i <= totalPage; i++)
+                    {
+                        <li class="page-item @(i==selectedPage?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@i">@i</a></li>
+                    }
+
+                    <li class="page-item  @(selectedPage == totalPage ? "disabled":"") ">
+                        <a class="page-link" asp-action="index" asp-route-page="@(selectedPage+1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
     </div>
 </div>
 

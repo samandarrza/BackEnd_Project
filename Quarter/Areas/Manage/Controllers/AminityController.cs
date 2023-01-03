@@ -19,7 +19,7 @@ namespace Quarter.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
             var model = _context.Aminities.ToList();
             return View(model);

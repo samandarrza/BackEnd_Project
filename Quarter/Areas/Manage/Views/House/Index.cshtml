@@ -1,6 +1,11 @@
 ﻿@using Quarter.Areas.Manage.ViewModels
 @model PaginatedList<House>
-
+@{
+    int order = (Model.PageIndex - 1) * Model.PageSize;
+    int firstpage = 1;
+    int pages = Model.TotalPages;
+    int currentPage = 1;
+}
 <div class="container-fluid">
     <div class="d-flex justify-content-between mx-2">
         <h3><b>Houses</b></h3>
@@ -42,5 +47,34 @@
             </tbody>
         </table>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(!Model.HasPrevious? "disabled":"")">
+                        <a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex-1)" tabindex="-1">Previous</a>
+                    </li>
+                    @for (var i = 1; i <= pages; i++)
+                    {
+                        if (pages > 5)
+                        {
+                            pages = 5;
+                        }
+                        if (Model.PageIndex > 3 && pages < Model.TotalPages)
+                        {
+                            pages = Model.PageIndex + 2;
 
+                        }
+
+                        <li class="page-item @(i==Model.PageIndex?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@i">@i</a></li>
+                    }
+
+                    <li class="page-item  @(!Model.HasNext? "disabled":"") ">
+                        <a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex+1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
 </div>

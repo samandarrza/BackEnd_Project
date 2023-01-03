@@ -1,0 +1,13 @@
+﻿@model Feature
+    <div class="text-center p-5">
+        <div class="ltn__feature-icon">
+            <img src="~/main/uploads/featureImage/@Model.Image" alt="#">
+        </div>
+        <div class="ltn__feature-info">
+            <h3><a asp-action="detail" asp-controller="feature" asp-route-id="@Model.Id">@Model.Title</a></h3>
+
+            <p>@Html.Raw(Model.Desc)</p>
+        </div>
+    </div>
+
+

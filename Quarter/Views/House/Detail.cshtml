@@ -51,7 +51,7 @@
                                 <a asp-action="addtobasket" asp-controller="house" asp-route-houseId="@Model.House.Id" class="add-to-basket">Add to basket</a>
                                 </li>
                                 <li class="ltn__blog-category">
-                                <a class="bg-orange" href="#">@(Model.House.Status == true ? "On Sale" : "Sold")</a>
+                                <a class="bg-@(Model.House.Status == true ? "orange" : "red")" href="#">@(Model.House.Status == true ? "On Sale" : "Sold")</a>
                                 </li>
                                 <li class="ltn__blog-date">
                                 <i class="far fa-calendar-alt"></i>@Model.House.CreatedAt.ToString("dd MMMM, yyyy")
@@ -143,8 +143,8 @@
 
                         <h4 class="title-2">Location</h4>
                         <div class="property-details-google-map mb-60">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9334.271551495209!2d-73.97198251485975!3d40.668170674982946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0456b5a2e7%3A0x68bdf865dda0b669!2sBrooklyn%20Botanic%20Garden%20Shop!5e0!3m2!1sen!2sbd!4v1590597267201!5m2!1sen!2sbd" width="100%" height="100%" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.42999466046!2d49.71487539548643!3d40.39450797992698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2s!4v1672772857268!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
 
                         
                         <div class="ltn__shop-details-tab-content-inner--- ltn__shop-details-tab-inner-2 ltn__product-details-review-inner mb-60">
@@ -163,7 +163,7 @@
                                                 </div>
                                                 <div class="ltn__commenter-comment">
                                                     <h6><a href="#">@comment.AppUser.FullName</a></h6>
-                                                    <p>@comment.Text</p>
+                                                    <p class="p-2">@comment.Text</p>
                                                     <span class="ltn__comment-reply-btn">@comment.CreatedAt.ToString("dd MMMM, yyyy")</span>
                                                 </div>
                                             </div>
@@ -257,7 +257,7 @@
                                 <h5>@Model.House.Broker.Fullname</h5>
                                 <div class="product-ratting">
                                     <ul>
-                                        <li class="review-total"> <a href="#"> ( 1 Reviews )</a></li>
+                                    <li class="review-total"> <a href="#"> ( @Model.House.Comments.Count Reviews )</a></li>
                                     </ul>
                                 </div>
                                 <div class="ltn__social-media">

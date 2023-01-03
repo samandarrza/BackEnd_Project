@@ -31,7 +31,7 @@ namespace Quarter.Areas.Manage.Controllers
             .Include(x => x.City)
             .Include(x=>x.Broker);
             
-            var model = PaginatedList<House>.Create(query, page, 20);
+            var model = PaginatedList<House>.Create(query, page, 5);
             return View(model);
         }
         public IActionResult Create()

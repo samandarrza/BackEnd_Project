@@ -45,104 +45,10 @@
     </div>
     <!-- SLIDER AREA END -->
 
-    <!--  DEALER FORM AREA START -->
-    <div class="ltn__car-dealer-form-area mt--65 mt-120 pb-115---">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__car-dealer-form-tab">
-                        <div class="ltn__tab-menu  text-uppercase d-none">
-                            <div class="nav">
-                                <a class="active show" data-bs-toggle="tab" href="#ltn__form_tab_1_1"><i class="fas fa-car"></i>Find A Car</a>
-                                <a data-bs-toggle="tab" href="#ltn__form_tab_1_2" class=""><i class="far fa-user"></i>Get a Dealer</a>
-                            </div>
-                        </div>
-                        <div class="tab-content bg-white box-shadow-1 position-relative pb-10">
-                            <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
-                                <div class="car-dealer-form-inner">
-                                    <form action="#" class="ltn__car-dealer-form-box row">
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
-                                            <select class="nice-select">
-                                                <option>Choose Area</option>
-                                                @foreach (var city in Model.Cities)
-                                            {
-                                                 <option>@city.Name</option>
-                                            }
-                                            </select>
-                                        </div> 
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
-                                            <select class="nice-select">
-                                                <option>Property Status</option>
-                                                <option>Rent</option>
-                                                <option>Sale</option>
-                                            </select>
-                                        </div> 
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
-                                            <select class="nice-select">
-                                                <option>Property Type</option>
-                                                @foreach (var category in Model.Categories)
-                                                {
-                                                    <option>@category.Name</option>
-                                                }
-                                                
-                                            </select>
-                                        </div>
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                            <div class="btn-wrapper text-center mt-0">
-                                                <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Find Now</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="ltn__form_tab_1_2">
-                                <div class="car-dealer-form-inner">
-                                    <form action="#" class="ltn__car-dealer-form-box row">
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-car---- col-lg-3 col-md-6">
-                                            <select class="nice-select">
-                                            <option>Choose Area</option>
-                                            @foreach (var city in Model.Cities)
-                                            {
-                                                <option>@city.Name</option>
-                                            }
-                                            </select>
-                                        </div> 
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-meter---- col-lg-3 col-md-6">
-                                            <select class="nice-select">
-                                                <option>Property Status</option>
-                                                <option>Rent</option>
-                                                <option>Sale</option>
-                                            </select>
-                                        </div> 
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon---- ltn__icon-calendar---- col-lg-3 col-md-6">
-                                            <select class="nice-select">
-                                            <option>Property Type</option>
-                                            @foreach (var category in Model.Categories)
-                                            {
-                                                    <option>@category.Name</option>
-                                            }
-                                            </select>
-                                        </div>
-                                        <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                            <div class="btn-wrapper text-center mt-0">
-                                                <!-- <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> -->
-                                                <a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Properties</a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  DEALER FORM AREA END -->
 
     <!-- ABOUT US AREA START -->
-    @foreach (var about in Model.Abouts)
-    {
+@foreach (var about in Model.Abouts.Take(1))
+{
     <div class="ltn__about-us-area pt-120 pb-90 ">
         <div class="container">
             <div class="row">
@@ -248,49 +154,57 @@
     <!-- ABOUT US AREA START -->
     <div class="ltn__about-us-area pt-120 pb-90 ">
         <div class="container">
+            @foreach (var item in Model.Houses.Take(1))
+                        {
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="about-us-info-wrap">
                         <div class="section-title-area ltn__section-title-2--- mb-30">
                             <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Us</h6>
                             <h1 class="section-title">Today Sells Properties</h1>
-                            <p>Houzez allow you to design unlimited panels and real estate custom
-                                forms to capture leads and keep record of all information</p>
+                            <p>
+                                @Html.Raw(item.Desc)
+                            </p>
                         </div>
                         <ul class="ltn__list-item-1 ltn__list-item-1-before clearfix">
-                            <li> Live Music Cocerts at Luviana</li>
+                            <li>Live Music Cocerts at Luviana</li>
                             <li>Our SecretIsland Boat Tour is Just for You</li>
                             <li>Live Music Cocerts at Luviana</li>
                             <li>Live Music Cocerts at Luviana</li>
                         </ul>
                         <ul class="ltn__list-item-2 ltn__list-item-2-before ltn__flat-info">
-                            <li><span>3 <i class="flaticon-bed"></i></span>
+                            <li>
+                                <span>@item.BedRoomCount <i class="flaticon-bed"></i></span>
                                 Bedrooms
                             </li>
-                            <li><span>2 <i class="flaticon-clean"></i></span>
+                            <li>
+                                <span>@item.BathRoomCount <i class="flaticon-clean"></i></span>
                                 Bathrooms
                             </li>
-                            <li><span>2 <i class="flaticon-car"></i></span>
+                            <li>
+                                <span>@item.CarParking <i class="flaticon-car"></i></span>
                                 Car parking
                             </li>
-                            <li><span>3450 <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span>
+                            <li>
+                                <span>@item.SquareFt <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span>
                                 square Ft
                             </li>
                         </ul>
                         <ul class="ltn__list-item-2 ltn__list-item-2-before--- ltn__list-item-2-img mb-50">
+                            
                             <li>
-                                <a href="img/img-slide/11.jpg" data-rel="lightcase:myCollection">
-                                    <img src="~/main/img/img-slide/11.jpg" alt="Image">
+                                <a href="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==false)?.Name" data-rel="lightcase:myCollection">
+                                    <img src="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==false)?.Name" alt="Image">
                                 </a>
                             </li>
                             <li>
-                                <a href="img/img-slide/12.jpg" data-rel="lightcase:myCollection">
-                                    <img src="~/main/img/img-slide/12.jpg" alt="Image">
+                                <a href="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" data-rel="lightcase:myCollection">
+                                    <img src="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" alt="Image">
                                 </a>
                             </li>
                             <li>
-                                <a href="img/img-slide/13.jpg" data-rel="lightcase:myCollection">
-                                    <img src="~/main/img/img-slide/13.jpg" alt="Image">
+                                <a href="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==false)?.Name" data-rel="lightcase:myCollection">
+                                    <img src="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==false)?.Name" alt="Image">
                                 </a>
                             </li>
                         </ul>
@@ -302,6 +216,8 @@
                     </div>
                 </div>
             </div>
+
+        }
         </div>
     </div>
     <!-- ABOUT US AREA END -->
@@ -326,9 +242,9 @@
                             <img src="~/main/uploads/featureImage/@item.Image" alt="#">
                         </div>
                         <div class="ltn__feature-info">
-                            <h3><a href="service-details.html">@item.Title</a></h3>
-                            <p>@item.Desc</p>
-                            <a class="ltn__service-btn" href="~/">Find A Home <i class="flaticon-right-arrow"></i></a>
+                            <h3><a asp-action="detail" asp-controller="feature" asp-route-id="@item.Id">@item.Title</a></h3>
+                            <p>@Html.Raw(@item.Desc)</p>
+                            <a class="ltn__service-btn" asp-action="detail" asp-controller="feature" asp-route-id="@item.Id">Find A Home <i class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
                 </div>
@@ -360,7 +276,7 @@
                             <a asp-action="detail" asp-controller="house" asp-route-id="@house.Id"><img width="100%" height="280px" src="~/main/uploads/houses/@house.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge bg-@(house.Status==true?"green":"red")">@(house.Status==true?"On Sale":"Sold")</li>
+                                    <li class="sale-badge bg-@(house.Status==true?"orange":"red")">@(house.Status == true ? "On Sale" : "Sold")</li>
                                 </ul>
                             </div>
                             <div class="product-img-location-gallery">
@@ -427,17 +343,17 @@
                             <div class="product-hover-action">
                                 <ul>
                                     <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                                        <a asp-action="detail" asp-controller="house" asp-route-id="@house.Id" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                             <i class="flaticon-expand"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                        <a asp-action="addtobasket" asp-controller="house" asp-route-houseId="@house.Id" class="add-to-basket" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
                                             <i class="flaticon-heart-1"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a asp-action="addtobasket" asp-controller="house" asp-route-houseId="@house.Id" class="add-to-basket" title="Add Basket">
+                                        <a asp-action="detail" asp-controller="house" asp-route-id="@house.Id" title="Detail">
                                             <i class="flaticon-add"></i>
                                         </a>
                                     </li>

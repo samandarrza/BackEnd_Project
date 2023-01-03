@@ -20,9 +20,11 @@ namespace Quarter.Areas.Manage.Controllers
             {
                 _context = context;
             }
-            public IActionResult Index()
+            public IActionResult Index(int page = 1)
             {
-                var model = _context.Categories.ToList();
+                var model = _context.Categories.Skip((page - 1) * 5).Take(5).ToList();
+                ViewBag.Page = page;
+                ViewBag.TotalPage = (int)Math.Ceiling(_context.Sliders.Count() / 5d);
                 return View(model);
             }
             public IActionResult Create()

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Quarter.DAL;
 using Quarter.Helpers;
 using Quarter.Models;
@@ -19,9 +20,11 @@ namespace Quarter.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var model = _context.Abouts.ToList();
+            var model = _context.Abouts.Skip((page - 1) * 5).Take(5).ToList();
+            ViewBag.Page = page;
+            ViewBag.TotalPage = (int)Math.Ceiling(_context.Sliders.Count() / 5d);
             return View(model);
         }
         public IActionResult Create()
