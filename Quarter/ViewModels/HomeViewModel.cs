@@ -12,5 +12,6 @@ namespace Quarter.ViewModels
         public List<House> Houses { get; set; }
         public List<Setting> Settings { get; set; }
         public List<About> Abouts { get; set; }
+        public List<Feature> Features { get; set; }
     }
 }

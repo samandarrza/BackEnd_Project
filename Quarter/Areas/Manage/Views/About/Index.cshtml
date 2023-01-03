@@ -31,7 +31,7 @@
                         <td><img width="50px" src="~/main/uploads/aboutImage/@about.VideoImage"></td>
                         <td>
                             <a asp-action="edit" asp-route-id="@about.Id"><i class="fa fa-edit text-primary"> </i></a>
-                            <a asp-action="delete" asp-route-id="@about.Id"><i class="fa fa-trash text-danger"> </i></a>
+                            <a class="trash-btn" asp-action="delete" asp-route-id="@about.Id"><i class="fa fa-trash text-danger"> </i></a>
                         </td>
                     </tr>
                 }

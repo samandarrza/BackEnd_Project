@@ -61,7 +61,12 @@ namespace Quarter.Areas.Manage.Controllers
             return RedirectToAction("index", "dashboard");
         }
 
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
 
+            return RedirectToAction("login", "account");
+        }
 
         //public async Task<IActionResult> CreateRole()
         //{

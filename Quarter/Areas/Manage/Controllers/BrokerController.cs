@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Bcpg.Sig;
 using Quarter.DAL;
 using Quarter.Helpers;
 using Quarter.Models;
@@ -75,7 +76,7 @@ namespace Quarter.Areas.Manage.Controllers
                 ModelState.AddModelError("Name", "Bu adda data var");
                 return View();
             }
-            if (broker == null || broker.Fullname == null || broker.Image == null)
+            if (broker == null)
             {
                 return View();
             }
@@ -84,8 +85,13 @@ namespace Quarter.Areas.Manage.Controllers
             {
                 return RedirectToAction("Index");
             }
+            if (broker.ProfilFile != null)
+            {
+                var newImage = FileManager.Save(broker.ProfilFile, _env.WebRootPath, "main/uploads/brokerImage");
+                FileManager.Delete(_env.WebRootPath, "main/uploads/brokerImage", existBroker.Image);
+                existBroker.Image = newImage;
+            }
             existBroker.Fullname = broker.Fullname;
-            existBroker.Image = broker.Image;
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -95,7 +101,10 @@ namespace Quarter.Areas.Manage.Controllers
 
             if (broker == null)
                 return RedirectToAction("error", "dashboard");
-
+            if (broker.Image != null)
+            {
+                FileManager.Delete(_env.WebRootPath, "main/uploads/brokerImage", broker.Image);
+            }
             _context.Brokers.Remove(broker);
             _context.SaveChanges();
 

@@ -3,6 +3,7 @@
 @inject LayoutService layoutService
 @inject UserManager<AppUser> _userManager
 @{
+    BasketViewModel basket = layoutService.GetBasket();
     AppUser user = null;
     if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
     {
@@ -16,7 +17,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Quarter - Real Estate HTML Template</title>
+    <title>Quarter</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -164,7 +165,7 @@
                         <div class="mini-cart-icon">
                             <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                 <i class="icon-shopping-cart"></i>
-                                <sup>2</sup>
+                                <sup id="basket_count">@basket.Items.Count</sup>
                             </a>
                         </div>
                         <!-- mini-cart -->
@@ -188,64 +189,8 @@
 
     <!-- Utilize Cart Menu Start -->
     <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
-        <div class="ltn__utilize-menu-inner ltn__scrollbar">
-            <div class="ltn__utilize-menu-head">
-                <span class="ltn__utilize-menu-title">Cart</span>
-                <button class="ltn__utilize-close">×</button>
-            </div>
-            <div class="mini-cart-product-area ltn__scrollbar">
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="~/main/img/product/1.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Wheel Bearing Retainer</a></h6>
-                        <span class="mini-cart-quantity">1 x $65.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="~/main/img/product/2.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Brake Conversion Kit</a></h6>
-                        <span class="mini-cart-quantity">1 x $85.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="~/main/img/product/3.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">OE Replica Wheels</a></h6>
-                        <span class="mini-cart-quantity">1 x $92.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="~/main/img/product/4.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Shock Mount Insulator</a></h6>
-                        <span class="mini-cart-quantity">1 x $68.00</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mini-cart-footer">
-                <div class="mini-cart-sub-total">
-                    <h5>Subtotal: <span>$310.00</span></h5>
-                </div>
-                <div class="btn-wrapper">
-                    <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                    <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
-                </div>
-                <p>Free Shipping on All Orders Over $100!</p>
-            </div>
-
+        <div id="basket-block" class="ltn__utilize-menu-inner ltn__scrollbar">
+                @await Html.PartialAsync("_BasketPartial", basket)
         </div>
     </div>
     <!-- Utilize Cart Menu End -->
@@ -759,7 +704,10 @@
     <!-- All JS Plugins -->
     <script src="~/main/js/plugins.js"></script>
     <!-- Main JS -->
+
     <script src="~/main/js/main.js"></script>
+    <script src="~/main/js/app.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @RenderSection("Scripts",required:false);

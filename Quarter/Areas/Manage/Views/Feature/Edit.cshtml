@@ -1,7 +1,40 @@
-﻿
-@{
-    ViewData["Title"] = "Edit";
+﻿@model Feature
+<h3 class="m-sm-3">Edit</h3>
+
+<div class="container-fluid">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form asp-action="edit" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="ImageFile">ImageFile</label>
+                        <input asp-for="ImageFile" class="form-control">
+                        <img width="100px" style="border-radius: 10px" src="~/main/uploads/featureImage/@Model.Image" />
+                        <span class="text-danger" asp-validation-for="ImageFile"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title">Title</label>
+                        <input asp-for="Title" type="text" class="form-control" id="titleInput">
+                        <span class="text-danger" asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Desc">Desc</label>
+                        <textarea id="editor" asp-for="Desc" class="form-control"></textarea>
+                        <span class="text-danger" asp-validation-for="Desc"></span><br />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 }
-
-<h1>Edit</h1>
-
