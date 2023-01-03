@@ -1,0 +1,26 @@
+﻿@model Order
+<div class="ltn__checkout-single-content-info">
+    <form id="order-form" method="post">
+        <h6>Personal Information</h6>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-item input-item-name ltn__custom-icon">
+                    <input asp-for="Fullname" type="text" placeholder="Fullname">
+                    <span asp-validation-for="Fullname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-item input-item-email ltn__custom-icon">
+                    <input asp-for="Email" type="email" placeholder="Email address">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <h6>Order Notes</h6>
+        <div class="input-item input-item-textarea ltn__custom-icon">
+            <textarea asp-for="Note" placeholder="Notes about your order"></textarea>
+            <span asp-validation-for="Note" class="text-danger"></span>
+        </div>
+    </form>
+</div>
+

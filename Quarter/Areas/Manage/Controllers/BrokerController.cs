@@ -101,6 +101,7 @@ namespace Quarter.Areas.Manage.Controllers
 
             if (broker == null)
                 return RedirectToAction("error", "dashboard");
+
             if (broker.Image != null)
             {
                 FileManager.Delete(_env.WebRootPath, "main/uploads/brokerImage", broker.Image);

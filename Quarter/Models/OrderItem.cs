@@ -10,8 +10,7 @@ namespace Quarter.Models
         [MaxLength(100)]
         public string Name { get; set; }
         public int OrderId { get; set; }
-        public int? BookId { get; set; }
-        public int Count { get; set; }
+        public int? HouseId { get; set; }
         public int SalePrice { get; set; }
         public int DiscountPercent { get; set; }
         public int CostPrice { get; set; }
