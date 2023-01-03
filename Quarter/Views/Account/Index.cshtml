@@ -1,0 +1,142 @@
+﻿@model MemberUpdateViewModel
+<!-- BREADCRUMB AREA START -->
+<div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="img/bg/14.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__breadcrumb-inner">
+                    <h1 class="page-title">My Account</h1>
+                    <div class="ltn__breadcrumb-list">
+                        <ul>
+                            <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                            <li>My Account</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BREADCRUMB AREA END -->
+<!-- WISHLIST AREA START -->
+<div class="liton__wishlist-area pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- PRODUCT TAB AREA START -->
+                <div class="ltn__product-tab-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="ltn__tab-menu-list mb-50">
+                                    <div class="nav">
+                                        <a data-bs-toggle="tab" href="#liton_tab_1_2">Orders <i class="fas fa-file-alt"></i></a>
+                                        <a class="active show" data-bs-toggle="tab" href="#liton_tab_1_5">Account Details <i class="fas fa-user"></i></a>
+                                        <a asp-action="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade" id="liton_tab_1_2">
+                                        <div class="ltn__myaccount-tab-content-inner">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Order</th>
+                                                            <th>Date</th>
+                                                            <th>Status</th>
+                                                            <th>Total</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Jun 22, 2019</td>
+                                                            <td>Pending</td>
+                                                            <td>$3000</td>
+                                                            <td><a href="cart.html">View</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>Nov 22, 2019</td>
+                                                            <td>Approved</td>
+                                                            <td>$200</td>
+                                                            <td><a href="cart.html">View</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Jan 12, 2020</td>
+                                                            <td>On Hold</td>
+                                                            <td>$990</td>
+                                                            <td><a href="cart.html">View</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade  active show" id="liton_tab_1_5">
+                                        <div class="ltn__myaccount-tab-content-inner">
+                                            <div class="ltn__form-box">
+                                                <form method="post" enctype="multipart/form-data">
+                                                    <div class="row mb-50">
+                                                        <div class="col-md-6">
+                                                            <label>Fullname:</label>
+                                                            <input asp-for="FullName" type="text" name="FullName">
+                                                            <span class="text-danger" asp-validation-for="FullName"></span>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>ImageFile:</label>
+                                                            <img width="40px" height="40px" style="border-radius: 25px" src="~/main/uploads/userImage/@Model.Image" />
+                                                            <input class="form-control" asp-for="ImageFile" placeholder="Image">
+                                                            <span class="text-danger" asp-validation-for="ImageFile"></span>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Username:</label>
+                                                            <input asp-for="UserName" type="text" name="UserName" placeholder="UserName">
+                                                            <span class="text-danger" asp-validation-for="UserName"></span>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Email:</label>
+                                                            <input asp-for="Email" type="email" name="Email" placeholder="Email">
+                                                            <span class="text-danger" asp-validation-for="Email"></span>
+                                                        </div>
+                                                    </div>
+                                                    <fieldset>
+                                                        <legend>Password change</legend>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label>Current password:</label>
+                                                                <input asp-for="CurrentPassword">
+                                                                <span class="text-danger" asp-validation-for="CurrentPassword"></span>
+                                                                <label>New password:</label>
+                                                                <input asp-for="Password">
+                                                                <span class="text-danger" asp-validation-for="Password"></span>
+                                                                <label>Confirm new password:</label>
+                                                                <input asp-for="ConfirmPassword">
+                                                                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                                                    <div class="btn-wrapper">
+                                                        <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Save Changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PRODUCT TAB AREA END -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- WISHLIST AREA START -->
