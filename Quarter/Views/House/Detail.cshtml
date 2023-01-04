@@ -185,10 +185,10 @@
                                      <div class="col-xl-6 col-sm-6 col-12">
                                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                                     <div class="product-img">
-                                        <a href="product-details.html"><img src="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" alt="#"></a>
+                                        <a asp-action="detail" asp-controller="house" asp-route-id="@item.Id"><img src="~/main/uploads/houses/@item.HouseImages.FirstOrDefault(x=>x.PosterStatus==true)?.Name" alt="#"></a>
                                         <div class="real-estate-agent">
                                             <div class="agent-img">
-                                                <a href="team-details.html"><img src="~/main/uploads/brokerImage/@item.Broker.Image" alt="#"></a>
+                                                <a asp-action="detail" asp-controller="house" asp-route-id="@item.Id"><img src="~/main/uploads/brokerImage/@item.Broker.Image" alt="#"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -198,11 +198,11 @@
                                                 <li class="sale-badg">@(Model.House.Status==true?"On Sale":"Sold")</li>
                                             </ul>
                                         </div>
-                                        <h2 class="product-title"><a href="product-details.html">@item.Name</a></h2>
+                                        <h2 class="product-title"><a asp-action="detail" asp-controller="house" asp-route-id="@item.Id">@item.Name</a></h2>
                                         <div class="product-img-location">
                                             <ul>
                                                 <li>
-                                                    <a href="product-details.html"><i class="flaticon-pin"></i> Azerbaijan, @item.City.Name</a>
+                                                    <a asp-action="detail" asp-controller="house" asp-route-id="@item.Id"><i class="flaticon-pin"></i> Azerbaijan, @item.City.Name</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -220,16 +220,16 @@
                                         <div class="product-hover-action">
                                             <ul>
                                                 <li>
-                                                    <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                                                    <a asp-action="detail" asp-controller="house" asp-route-id="@item.Id">
                                                         <i class="flaticon-expand"></i>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                    <a asp-action="addtobasket" asp-controller="house" asp-route-houseId="@item.Id" class="add-to-basket" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
                                                         <i class="flaticon-heart-1"></i></a>
                                                 </li>
                                                 <li>
-                                                    <a href="portfolio-details.html" title="Compare">
+                                                    <a asp-action="detail" asp-controller="house" asp-route-id="@item.Id">
                                                         <i class="flaticon-add"></i>
                                                     </a>
                                                 </li>
