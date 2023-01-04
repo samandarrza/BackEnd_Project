@@ -199,5 +199,8 @@ namespace Quarter.Controllers
             }
             return PartialView("_BasketPartial", basket);
         }
+
+
+
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G0/MQwv/9vjlVBo6BEumzOR8A6ARwpBC6XGi6poJg1M=",
+  "Hash": "IXn/H4X0yL8waKAp67YJzAiPUBvQvCtKthdH3H44hIQ=",
   "Source": "Quarter",
   "BasePath": "_content/Quarter",
   "Mode": "Default",
@@ -6358,6 +6358,23 @@
       "OriginalItemSpec": "wwwroot\\main\\uploads\\featureImage\\fd581781-262b-4bff-99f8-12ccba17d83422.png"
     },
     {
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\005e9556-1548-4144-a8b4-b8af5a52c74232.jpg",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "main/uploads/houses/005e9556-1548-4144-a8b4-b8af5a52c74232.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\005e9556-1548-4144-a8b4-b8af5a52c74232.jpg"
+    },
+    {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\01f9fd66-fcac-4272-957f-26ddf74e96790LWWV1UfQI.jpg",
       "SourceId": "Quarter",
       "SourceType": "Discovered",
@@ -6390,6 +6407,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\0810c202-268e-427d-ac1a-b30b241b9ff233.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\097e4065-9c17-4ac2-b6f4-1af4f0e7c09f34.jpg",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "main/uploads/houses/097e4065-9c17-4ac2-b6f4-1af4f0e7c09f34.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\097e4065-9c17-4ac2-b6f4-1af4f0e7c09f34.jpg"
     },
     {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\0ad13c26-1db8-468c-a2df-de69c2d6a07835.jpg",
@@ -6664,6 +6698,23 @@
       "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\808a65e3-d4f5-4878-aeb1-f8b1fc00a08b35.jpg"
     },
     {
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\85bd081f-e8da-4055-8282-facff009136a33.jpg",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "main/uploads/houses/85bd081f-e8da-4055-8282-facff009136a33.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\85bd081f-e8da-4055-8282-facff009136a33.jpg"
+    },
+    {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\87da65e7-d54f-4481-8cb2-7e1852910b6832.jpg",
       "SourceId": "Quarter",
       "SourceType": "Discovered",
@@ -6749,6 +6800,23 @@
       "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\9284676f-3947-41d4-84ea-b2e399c99b3f0LWWV1UfQI.jpg"
     },
     {
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\a28b70a2-4990-4fce-bd6b-01cf469ab45b35.jpg",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "main/uploads/houses/a28b70a2-4990-4fce-bd6b-01cf469ab45b35.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\a28b70a2-4990-4fce-bd6b-01cf469ab45b35.jpg"
+    },
+    {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\ac34fb2f-94d4-47d1-93cf-c7c79c41eb730LWWV1UfQI.jpg",
       "SourceId": "Quarter",
       "SourceType": "Discovered",
@@ -6815,6 +6883,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\ddc278ad-8593-4ace-9d8f-9f8367f52a0e31.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\e2306ca5-f867-4db4-8a8e-1928c0ce89c331.jpg",
+      "SourceId": "Quarter",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\",
+      "BasePath": "_content/Quarter",
+      "RelativePath": "main/uploads/houses/e2306ca5-f867-4db4-8a8e-1928c0ce89c331.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\main\\uploads\\houses\\e2306ca5-f867-4db4-8a8e-1928c0ce89c331.jpg"
     },
     {
       "Identity": "C:\\Users\\USER\\source\\repos\\Backend\\Quarter\\Quarter\\wwwroot\\main\\uploads\\houses\\e240ed72-d6f5-4905-b14f-1db89854bd6e35.jpg",
